@@ -8,3 +8,7 @@ class Card
 
  end
 end
+
+
+nature1 = Card.new("What stats does jolly raise?", "speed", "natures")
+nature2 = Card.new("What stats does adamant nature raise", "attack", "natures")
