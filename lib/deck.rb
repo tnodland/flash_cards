@@ -8,6 +8,11 @@ class Deck
   def initialize(card, deck)
     @card = card
     @deck = []
-      end
-      
+  end
+
+  def cards_in_category
+    @deck.each do |category|
+
+  end
+
 end
