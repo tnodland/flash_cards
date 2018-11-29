@@ -2,13 +2,13 @@ require 'pry'
 require './lib/card'
 
 class Deck
-  attr_reader :card, :deck
+  attr_reader :cards
 
-  def initialize
-    @deck = []
+  def initialize(cards)
+    @cards = []
   end
 
   def contents
-
+    @cards << card
   end
 end
