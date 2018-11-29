@@ -15,7 +15,10 @@ class DeckTest < Minitest::Test
       card_1 = Card.new("What stat does jolly nature raise?", "speed", :pokemon)
       card_2 = Card.new("What stat does adamant nature raise?", "attack", :pokemon)
       cards = [card_1, card_2]
-      deck = Deck.new(cards)
-      assert_equal cards, deck.cards
+      deck_1 = Deck.new(cards)
+      assert_equal cards, deck_1.cards
+    end
+
+    def test_deck_knows_categories
     end
 end
