@@ -8,19 +8,15 @@ class Turn
     @card = card
   end
 
-  def guess
-    guess = gets.chomp
-  end
-
   def correct?
     @guess == card.answer
   end
 
   def feedback
     if correct? == true
-      puts "Correct!"
+      return "Correct!"
     else
-      puts "Incorrect"
+      return "Incorrect"
    end
  end
 end
