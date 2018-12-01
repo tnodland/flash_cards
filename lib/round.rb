@@ -15,4 +15,11 @@ class Round
     turns = []
   end
 
+  def take_turn
+    turn1 = Turn.new("guess", 1)
+
+      take_turn.each do |turn|
+        turns << turn
+      end
+    end
 end

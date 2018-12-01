@@ -23,4 +23,24 @@ class DeckTest < Minitest::Test
     assert_instance_of Array, round.turns
   end
 
+
+  def test_take_turn_exists
+    cards = []
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    turn1 = round.take_turn
+
+    assert_instance_of Turn, turn1
+  end
+
+  def test_turns_can_hold_a_turn
+    cards = []
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    turn1 = round.take_turn
+
+    assert_equal turns.count, 1
+  end
+
+
 end
