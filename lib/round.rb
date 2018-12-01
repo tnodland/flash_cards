@@ -9,17 +9,12 @@ class Round
 
   def initialize(deck = [])
     @deck = deck
-  end
-
-  def turns
-    turns = []
+    @turns = []
   end
 
   def take_turn
-    turn1 = Turn.new("guess", 1)
-
-      take_turn.each do |turn|
-        turns << turn
-      end
-    end
+    new_turn = Turn.new(@guess, @card)
+    @turns << new_turn
+    return turns
+  end
 end

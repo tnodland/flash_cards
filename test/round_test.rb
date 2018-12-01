@@ -28,18 +28,29 @@ class DeckTest < Minitest::Test
     cards = []
     deck = Deck.new(cards)
     round = Round.new(deck)
-    turn1 = round.take_turn
+    new_turn = round.take_turn
 
-    assert_instance_of Turn, turn1
+    assert_instance_of Array, new_turn
   end
 
   def test_turns_can_hold_a_turn
     cards = []
     deck = Deck.new(cards)
     round = Round.new(deck)
-    turn1 = round.take_turn
+    round.take_turn
 
-    assert_equal turns.count, 1
+    assert_instance_of Integer, round.turns.count
+  end
+
+  def test_it_can_hold_multiple_turns\
+    cards = []
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn
+    round.take_turn
+
+    assert_equal 2, round.turns.count
+
   end
 
 
