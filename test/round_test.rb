@@ -14,4 +14,13 @@ class DeckTest < Minitest::Test
     round = Round.new(deck)
     assert_instance_of Round, round
   end
+
+  def test_turns_exists
+    cards = []
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    turns = round.turns
+    assert_instance_of Array, round.turns
+  end
+
 end
