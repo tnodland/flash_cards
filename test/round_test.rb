@@ -9,14 +9,16 @@ require './lib/round'
 class DeckTest < Minitest::Test
 
   def test_it_exists
-    cards = []
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
     deck = Deck.new(cards)
     round = Round.new(deck)
     assert_instance_of Round, round
   end
 
   def test_turns_exists
-    cards = []
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
     deck = Deck.new(cards)
     round = Round.new(deck)
     turns = round.turns
@@ -25,33 +27,46 @@ class DeckTest < Minitest::Test
 
 
   def test_take_turn_exists
-    cards = []
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    new_turn = round.take_turn
+    new_turn = round.take_turn("guess")
 
     assert_instance_of Array, new_turn
   end
 
   def test_turns_can_hold_a_turn
-    cards = []
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    round.take_turn
+    round.take_turn("guess")
 
     assert_instance_of Integer, round.turns.count
   end
 
-  def test_it_can_hold_multiple_turns\
-    cards = []
+  def test_it_can_hold_multiple_turns
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    round.take_turn
-    round.take_turn
+    round.take_turn("guess")
+    round.take_turn("guess2")
 
     assert_equal 2, round.turns.count
 
   end
+
+  def test_turns_have_guesses
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("guess")
+    assert_equal "guess", round.turns.last.guess
+  end
+
 
 
 end
