@@ -12,9 +12,10 @@ class Deck
     cat_array = []
     @cards.each do |card|
       if card.category == category
-      cat_array << card
+        cat_array << card
       end
     end
+    return cat_array
   end
 
 end
