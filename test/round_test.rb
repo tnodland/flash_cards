@@ -13,6 +13,7 @@ class DeckTest < Minitest::Test
     cards = [card_1]
     deck = Deck.new(cards)
     round = Round.new(deck)
+
     assert_instance_of Round, round
   end
 
@@ -22,6 +23,7 @@ class DeckTest < Minitest::Test
     deck = Deck.new(cards)
     round = Round.new(deck)
     turns = round.turns
+
     assert_instance_of Array, round.turns
   end
 
@@ -64,9 +66,29 @@ class DeckTest < Minitest::Test
     deck = Deck.new(cards)
     round = Round.new(deck)
     round.take_turn("guess")
+
     assert_equal "guess", round.turns.last.guess
   end
 
+  def test_guess_is_correct
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+
+    assert_equal true, round.turns.last.correct?
+  end
+
+  def test_guess_is_incorrect
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Question")
+
+    assert_equal false, round.turns.last.correct?
+  end
 
 
 end
