@@ -31,6 +31,13 @@ class Round
     (@number_correct.to_f / turns.count.to_f) * 100.0
   end
 
+  def start(cards)
+    puts "Welcome, you're playing with #{cards.count} cards"
+    puts "----------------------------------------------------"
+  end
+
+
+
   # def number_correct_by_category(category)
   #   correct_category = 0
   #     if category.
