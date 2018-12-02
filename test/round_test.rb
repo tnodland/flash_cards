@@ -35,7 +35,7 @@ class DeckTest < Minitest::Test
     round = Round.new(deck)
     new_turn = round.take_turn("guess")
 
-    assert_instance_of Array, new_turn
+    assert_instance_of Turn, new_turn
   end
 
   def test_turns_can_hold_a_turn
@@ -90,5 +90,35 @@ class DeckTest < Minitest::Test
     assert_equal false, round.turns.last.correct?
   end
 
+  def test_multiple_guesses_correct
+    card_1 = Card.new("Question", "Answer", :Category)
+    card_2 = Card.new("Question2", "Answer2", :Category)
+    cards = [card_1, card_2]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+    round.take_turn("Answer2")
 
+    assert_equal true, round.turns.first.correct?
+    assert_equal true, round.turns.last.correct?
+  end
+
+  def test_number_correct_exists
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+
+    assert_instance_of Integer, round.number_correct
+  end
+
+  def test_number_correct_can_raise
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+
+    assert_equal 1, round.number_correct
+  end
 end
