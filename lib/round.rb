@@ -31,5 +31,10 @@ class Round
     (@number_correct.to_f / turns.count.to_f) * 100.0
   end
 
+  # def number_correct_by_category(category)
+  #   correct_category = 0
+  #     if category.
+  #     end
+  # end
 
 end

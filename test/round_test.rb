@@ -181,4 +181,25 @@ class DeckTest < Minitest::Test
 
     assert_equal 50.0, round.percent_correct
   end
+
+  def test_number_correct_by_category_exists
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+
+    assert_instance_of Integer, round.number_correct_by_category(:Category)
+  end
+
+  # def test_number_correct_by_category_can_raise
+  #   card_1 = Card.new("Question", "Answer", :Category)
+  #   cards = [card_1]
+  #   deck = Deck.new(cards)
+  #   round = Round.new(deck)
+  #   round.take_turn("Answer")
+  #
+  #     assert_equal 1, round.number_correct_by_category(:Category)
+  # end
+
 end
