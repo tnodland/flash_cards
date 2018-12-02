@@ -21,6 +21,7 @@ class Round
     new_turn = Turn.new(guess, current_card)
     @turns << new_turn
     @deck.cards.shift
+    @number_correct += 1
     new_turn
   end
 

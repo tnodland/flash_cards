@@ -1,6 +1,5 @@
 require 'pry'
 require './lib/card'
-require './lib/round'
 class Turn
   attr_reader :guess, :card
 
@@ -16,7 +15,6 @@ class Turn
   def feedback
     if correct? == true
       return "Correct!"
-      @number_correct += 1
     else
       return "Incorrect"
    end

@@ -112,6 +112,17 @@ class DeckTest < Minitest::Test
     assert_instance_of Integer, round.number_correct
   end
 
+  def test_turns_can_give_feedback
+    card_1 = Card.new("Question", "Answer", :Category)
+    cards = [card_1]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+
+    assert_equal "Correct!", round.turns.last.feedback
+
+  end
+
   def test_number_correct_can_raise
     card_1 = Card.new("Question", "Answer", :Category)
     cards = [card_1]
