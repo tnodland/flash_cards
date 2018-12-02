@@ -49,6 +49,7 @@ class DeckTest < Minitest::Test
   end
 
   def test_it_can_hold_multiple_turns
+    skip
     card_1 = Card.new("Question", "Answer", :Category)
     cards = [card_1]
     deck = Deck.new(cards)
@@ -131,5 +132,53 @@ class DeckTest < Minitest::Test
     round.take_turn("Answer")
 
     assert_equal 1, round.number_correct
+  end
+
+  def test_number_correct_can_raise_higher
+    card_1 = Card.new("Question", "Answer", :Category)
+    card_2 = Card.new("Question2", "Answer2", :Category)
+    cards = [card_1, card_2]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+    round.take_turn("Answer2")
+
+    assert_equal 2, round.number_correct
+  end
+
+  def test_percent_correct_exists
+    card_1 = Card.new("Question", "Answer", :Category)
+    card_2 = Card.new("Question2", "Answer2", :Category)
+    cards = [card_1, card_2]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+    round.take_turn("Answer2")
+
+    assert_instance_of Float, round.percent_correct
+  end
+
+  def test_percent_correct_is_accurate
+    card_1 = Card.new("Question", "Answer", :Category)
+    card_2 = Card.new("Question2", "Answer2", :Category)
+    cards = [card_1, card_2]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+    round.take_turn("Answer2")
+
+    assert_equal 100.0, round.percent_correct
+  end
+
+  def test_percent_correct_is_accurate_still
+    card_1 = Card.new("Question", "Answer", :Category)
+    card_2 = Card.new("Question2", "Answer2", :Category)
+    cards = [card_1, card_2]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Answer")
+    round.take_turn("wrong")
+
+    assert_equal 50.0, round.percent_correct
   end
 end
