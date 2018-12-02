@@ -1,13 +1,12 @@
 require 'pry'
-require './lib/card'
 class Turn
   attr_reader :guess, :card
 
-  def initialize (guess, card)
+  def initialize(guess, card)
     @guess = guess
     @card = card
   end
-
+  
   def correct?
     @guess == card.answer
   end
