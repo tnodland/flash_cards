@@ -16,8 +16,20 @@ cards = [card_1, card_2, card_3, card_4]
 deck = Deck.new(cards)
 round = Round.new(deck)
 round.start(cards)
+puts "You are on turn #{round.current_turn} out of #{cards.count}"
 puts cards.first.question
 round.take_turn(gets.chomp)
+puts "You are on turn #{round.current_turn} out of #{cards.count}"
+puts cards.first.question
+round.take_turn(gets.chomp)
+puts "You are on turn #{round.current_turn} out of #{cards.count}"
+puts cards.first.question
+round.take_turn(gets.chomp)
+puts "You are on turn #{round.current_turn} out of #{cards.count}"
+puts cards.first.question
+round.take_turn(gets.chomp)
+puts "You were #{round.percent_correct}% correct!"
+
 
 # puts "Welcome, you're playing with #{cards.count} cards"
 # puts "----------------------------------------------------"

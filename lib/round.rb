@@ -5,12 +5,13 @@ require './lib/deck'
 
 
 class Round
-  attr_reader :deck, :turns, :number_correct
+  attr_reader :deck, :turns, :number_correct, :current_turn
 
   def initialize(deck = [])
     @deck = deck
     @turns = []
     @number_correct = 0
+    @current_turn = 1
   end
 
   def current_card
@@ -23,7 +24,8 @@ class Round
         @number_correct += 1
       end
     @turns << new_turn
-    @deck.cards.shift
+    @deck.cards.rotate! == deck
+    @current_turn += 1
     new_turn
   end
 
